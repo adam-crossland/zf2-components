@@ -16,8 +16,8 @@
         "phpunit/phpunit": "4.*"
     },
     "autoload": {
-        "psr-0": {
-            "ZF2Components": [
+        "psr-4": {
+            "ZF2Components\\": [
                 "src/",
                 ""
             ]
