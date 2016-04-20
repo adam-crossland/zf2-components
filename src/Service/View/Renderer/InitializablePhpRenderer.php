@@ -13,7 +13,10 @@ class InitializablePhpRenderer extends PhpRenderer
 	 */
 	public function render($nameOrModel, $values = null)
 	{
-		$nameOrModel->init();
+		if(is_object($nameOrModel) && $nameOrModel instanceof InitializableInterface){
+			$nameOrModel->init();
+		}
+
 		return parent::render($nameOrModel, $values);
 	}
 }

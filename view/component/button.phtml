@@ -1,0 +1,8 @@
+<?php
+/* @var $this Zend\View\Renderer\PhpRenderer  */
+/* @var $button ZF2Components\View\Component\Button */
+$button = $this->button;
+?>
+<button type="button" <?php echo $button->getAttributeString(); ?>>
+	<?php echo $button->getLabel(); ?>
+</button>
