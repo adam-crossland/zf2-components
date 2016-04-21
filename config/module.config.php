@@ -11,7 +11,7 @@ return array(
 			'ZF2Components\View\Component\ButtonBar' => 'ZF2Components\View\Component\ButtonBar',
 		),
 		'initializers' => array(
-			'ViewHelperManager' => 'ZF2Components\Initializer\View\ViewHelperManagerAwareInitializer'
+			'ZF2Components_ViewHelperManager' => 'ZF2Components\Initializer\View\ViewHelperManagerAwareInitializer'
 		),
     ),
     'view_manager' => array(
