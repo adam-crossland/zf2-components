@@ -1,0 +1,41 @@
+<?php
+/* @var $this Zend\View\Renderer\PhpRenderer  */
+/* @var $grid ZF2Components\View\Component\Grid */
+$grid = $this->grid;
+?>
+<div class="grid-top">
+	<div class="grid-top-section">
+		Total Results: <?php echo $grid->getCollectionResultCount(); ?>
+	</div>
+	<div class="grid-top-section middle">
+		<select>
+			<option value="25">25</option>
+			<option value="25">25</option>
+			<option value="25">25</option>
+		</select>
+		Results Per Page
+	</div>
+	<div class="grid-top-section middle">
+		<span aria-hidden="true">&larr;</span>
+		<input class="grid-current-page" maxlength="3" type="text" value="<?php echo $grid->getCurrentPage(); ?>"/> / <?php echo $grid->getTotalNumberOfPages(); ?>
+		<span aria-hidden="true">&rarr;</span>
+	</div>
+	<div class="grid-top-section">[SEARCH]</div>
+	<div style="clear: both;"></div>
+</div>
+<table class="table table-condensed table-hover table-bordered table-striped">
+	<thead><tr><?php
+		foreach($grid->getColumns() as $column){
+			echo $this->render($column->getHeader());
+		}
+	?></tr></thead>
+	<tbody><?php foreach($grid->getCollectionResults() as $row): $grid->setCurrentRow($row); ?>
+		<tr style="cursor: pointer;" onclick="window.location = '<?php echo $grid->getRowOnClickUrl(); ?>';">
+			<?php
+			foreach($grid->getColumns() as $column){
+				echo $this->render($column->getData());
+			}
+			?>
+		</tr>
+	<?php endforeach; ?></tbody>
+</table>

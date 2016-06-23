@@ -62,11 +62,16 @@ class Button extends ViewHelperAwareView implements InitializableInterface
 	/**
 	 * @param $id
 	 * @param bool $confirm
+	 * @param string $submitLocation
 	 * @return $this
 	 */
-	public function setOnclickSubmitForm($id, $confirm = false)
+	public function setOnclickSubmitForm($id, $confirm = false, $submitLocation = '')
 	{
-		$this->onClick = 'document.getElementById(\''.$id.'\').submit();';
+		$this->onClick = '';
+		if($submitLocation){
+			$this->onClick = '$(\'#'.$id.'\').attr(\'action\', \''.$submitLocation.'\'); ';
+		}
+		$this->onClick .= '$(\'#'.$id.'\').submit();';
 		$this->isConfirm = $confirm;
 		return $this;
 	}
@@ -255,7 +260,7 @@ class Button extends ViewHelperAwareView implements InitializableInterface
 	protected function getClass()
 	{
 		$class = 'class="';
-		$class .= sprintf('%s %s %s', $this->type, $this->size, $this->additionalClasses);
+		$class .= trim(sprintf('%s %s %s', $this->type, $this->size, $this->additionalClasses));
 		$class .= '"';
 		return $class;
 	}

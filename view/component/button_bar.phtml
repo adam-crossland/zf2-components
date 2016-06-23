@@ -1,0 +1,10 @@
+<?php
+/* @var $this Zend\View\Renderer\PhpRenderer  */
+/* @var $buttonBar ZF2Components\View\Component\ButtonBar */
+$buttonBar = $this->button_bar;
+?>
+<div <?php echo $buttonBar->getAttributeString(); ?>>
+	<?php foreach($buttonBar->getButtons() as $button): ?>
+		<?php echo $this->render($button); ?>&nbsp;
+	<?php endforeach; ?>
+</div>

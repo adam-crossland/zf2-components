@@ -1,0 +1,35 @@
+<?php
+/* @var $this Zend\View\Renderer\PhpRenderer  */
+/* @var $grid ZF2Components\View\Component\Grid */
+$grid = $this->grid;
+?>
+<style>
+	div.grid-top-section {
+		width: 25%;
+		float: left;
+	}
+	div.grid-top-section.middle {
+		/*text-align: center;*/
+	}
+	input.grid-current-page {
+		display: inline-block;
+		width: 35px;
+	}
+</style>
+<div class="grid-container" id="grid-data">
+	Loading...
+</div>
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			type: 'POST',
+			url: '<?php echo $grid->getAjaxUrl(); ?>',
+			data: {
+				'<?php echo ZF2Components\View\Component\Grid::AJAX_POST_KEY; ?>': '<?php echo $grid->export(); ?>'
+			},
+			success: function(response){
+				$('#grid-data').html(response);
+			}
+		})
+	})
+</script>

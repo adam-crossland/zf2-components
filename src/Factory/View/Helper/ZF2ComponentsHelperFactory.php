@@ -15,13 +15,20 @@ class ZF2ComponentsHelperFactory implements FactoryInterface
 	 */
 	public function createService(ServiceLocatorInterface $serviceLocator)
 	{
-		$realServiceLocator = $serviceLocator->getServiceLocator();
+		if(get_class($serviceLocator) instanceof \Zend\ServiceManager\ServiceManager){
+			$realServiceLocator = $serviceLocator;
+		}else{
+			$realServiceLocator = $serviceLocator->getServiceLocator();
+		}
+
 		$buttonBar = $realServiceLocator->get('ZF2Components\View\Component\ButtonBar');
 		$button = $realServiceLocator->get('ZF2Components\View\Component\Button');
+		$grid = $realServiceLocator->get('ZF2Components\View\Component\Grid');
 
 		return new ZF2ComponentsHelper(
 			$buttonBar,
-			$button
+			$button,
+			$grid
 		);
 	}
 }
