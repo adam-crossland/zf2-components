@@ -24,11 +24,13 @@ class ZF2ComponentsHelperFactory implements FactoryInterface
 		$buttonBar = $realServiceLocator->get('ZF2Components\View\Component\ButtonBar');
 		$button = $realServiceLocator->get('ZF2Components\View\Component\Button');
 		$grid = $realServiceLocator->get('ZF2Components\View\Component\Grid');
+		$accordionContent = $realServiceLocator->get('ZF2Components\View\Component\AccordionContent');
 
 		return new ZF2ComponentsHelper(
 			$buttonBar,
 			$button,
-			$grid
+			$grid,
+			$accordionContent
 		);
 	}
 }

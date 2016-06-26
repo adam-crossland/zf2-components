@@ -1,0 +1,36 @@
+<?php
+/* @var $this Zend\View\Renderer\PhpRenderer  */
+/* @var $accordion ZF2Components\View\Component\AccordionContent */
+$accordion = $this->accordion_content;
+$contents = $accordion->getContents();
+/** @var $content ZF2Components\View\Component\AccordionContent\Content */
+?>
+
+<div class="accordion-content-container">
+
+
+
+	<?php echo $this->form()->openTag($this->form); ?>
+
+	<div class="tabs">
+		<ul class="nav nav-pills nav-stacked">
+			<?php $isFirst = true; ?>
+			<?php foreach($contents as $contentId => $content): ?>
+				<li role="presentation" tab-selector="<?php echo $contentId; ?>">
+					<a onclick="editor.showTab('<?php echo $contentId; ?>');">
+						<?php echo $content->getTabLabel() ?>
+					</a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+
+	<?php foreach($contents as $contentId => $content): ?>
+		<div class="edit-content" tab-content="<?php echo $contentId; ?>">
+			<?php echo $content->getTabContentUrl(); ?>
+		</div>
+	<?php endforeach; ?>
+	<div style="clear: both;"></div>
+
+	<?php echo $this->form()->closeTag($this->form); ?>
+</div>

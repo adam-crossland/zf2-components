@@ -8,12 +8,14 @@ return array(
 			'ZF2Components\Service\View\Renderer\InitializablePhpRenderer' => 'ZF2Components\Factory\Service\View\Renderer\InitializablePhpRendererFactory',
 			'ZF2Components\View\Component\Grid' => 'ZF2Components\Factory\View\Component\GridFactory',
 			'ZF2Components\View\Component\Grid\Column\Standard' => 'ZF2Components\Factory\View\Component\Grid\Column\StandardFactory',
+			'ZF2Components\View\Component\AccordionContent' => 'ZF2Components\Factory\View\Component\AccordionContentFactory',
         ),
 		'invokables' => array(
 			'ZF2Components\View\Component\Button' => 'ZF2Components\View\Component\Button',
 			'ZF2Components\View\Component\ButtonBar' => 'ZF2Components\View\Component\ButtonBar',
 			'ZF2Components\View\Component\Grid\ColumnHeader\Standard' => 'ZF2Components\View\Component\Grid\ColumnHeader\Standard',
 			'ZF2Components\View\Component\Grid\ColumnData\Standard' => 'ZF2Components\View\Component\Grid\ColumnData\Standard',
+			'ZF2Components\View\Component\AccordionContent\Content' => 'ZF2Components\View\Component\AccordionContent\Content',
 		),
 		'initializers' => array(
 			'ZF2Components_ViewHelperManager' => 'ZF2Components\Initializer\View\ViewHelperManagerAwareInitializer'
@@ -23,7 +25,8 @@ return array(
 			'ZF2Components\View\Component\Grid\Column\Standard' => false,
 			'ZF2Components\View\Component\Grid\ColumnHeader\Standard' => false,
 			'ZF2Components\View\Component\Grid\ColumnData\Standard' => false,
-		)
+			'ZF2Components\View\Component\AccordionContent' => false,
+		),
     ),
 	'controllers' => array(
 		'factories' => array(
@@ -58,6 +61,11 @@ return array(
 	'view_helpers' => array(
 		'factories' => array(
 			'zf2components' => '\ZF2Components\Factory\View\Helper\ZF2ComponentsHelperFactory',
+		),
+	),
+	'form_elements' => array(
+		'invokables' => array(
+			'ZF2Components\Form\AccordionContentForm' => 'ZF2Components\Form\AccordionContentForm',
 		),
 	),
 );
