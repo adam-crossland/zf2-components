@@ -59,19 +59,32 @@ class Button extends ViewHelperAwareView implements InitializableInterface
 		return $this;
 	}
 
-	/**
-	 * @param $id
-	 * @param bool $confirm
-	 * @param string $submitLocation
-	 * @return $this
-	 */
-	public function setOnclickSubmitForm($id, $confirm = false, $submitLocation = '')
+    /**
+     * @param $id
+     * @param bool $confirm
+     * @param string $submitLocation
+     * @param bool $isAjax
+     * @param string $returnId
+     * @param string $dataType
+     * @return $this
+     */
+	public function setOnclickSubmitForm($id, $confirm = false, $submitLocation = '', $isAjax = false, $returnId = '', $dataType = '')
 	{
 		$this->onClick = '';
-		if($submitLocation){
-			$this->onClick = '$(\'#'.$id.'\').attr(\'action\', \''.$submitLocation.'\'); ';
-		}
-		$this->onClick .= '$(\'#'.$id.'\').submit();';
+
+        if(!$isAjax){
+            if($submitLocation){
+                $this->onClick = '$(\'#'.$id.'\').attr(\'action\', \''.$submitLocation.'\'); ';
+            }
+            $this->onClick .= '$(\'#'.$id.'\').submit();';
+        }else{
+            $this->onClick .= '$.ajax({method: \'POST\', url: \''.$submitLocation.'\', data: $(\'#'.$id.'\').serialize()';
+            if($dataType){
+                $this->onClick .= ', dataType: \''.$dataType.'\'';
+            }
+            $this->onClick .= '}).done(function(response){$(\'#'.$returnId.'\').html(response);})';
+        }
+
 		$this->isConfirm = $confirm;
 		return $this;
 	}
