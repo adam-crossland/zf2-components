@@ -9,6 +9,9 @@ return array(
 			'ZF2Components\View\Component\Grid' => 'ZF2Components\Factory\View\Component\GridFactory',
 			'ZF2Components\View\Component\Grid\Column\Standard' => 'ZF2Components\Factory\View\Component\Grid\Column\StandardFactory',
 			'ZF2Components\View\Component\AccordionContent' => 'ZF2Components\Factory\View\Component\AccordionContentFactory',
+
+			// Module Event
+			'ZF2Components\EventManager' => 'ZF2Components\Factory\EventManager\EventManagerFactory',
         ),
 		'invokables' => array(
 			'ZF2Components\View\Component\Button' => 'ZF2Components\View\Component\Button',
@@ -66,6 +69,13 @@ return array(
 	'form_elements' => array(
 		'invokables' => array(
 			'ZF2Components\Form\AccordionContentForm' => 'ZF2Components\Form\AccordionContentForm',
+		),
+	),
+	'asset_manager' => array(
+		'resolver_configs' => array(
+			'paths' => array(
+				'ZF2Components' => __DIR__.'/../public',
+			),
 		),
 	),
 );

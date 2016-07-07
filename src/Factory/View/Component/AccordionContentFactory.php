@@ -20,9 +20,13 @@ class AccordionContentFactory implements FactoryInterface
 		$formElementManager = $serviceLocator->get('formelementmanager');
 		$form = $formElementManager->get('ZF2Components\Form\AccordionContentForm');
 
+		/** @var \Zend\EventManager\SharedEventManager $sharedEventManager */
+		$eventManager = $serviceLocator->get('ZF2Components\EventManager');
+
 		return new AccordionContent(
 			$content,
-			$form
+			$form,
+			$eventManager
 		);
 	}
 }

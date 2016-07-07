@@ -1,6 +1,7 @@
 <?php
 namespace ZF2Components\View\Component;
 
+use Zend\EventManager\EventManagerInterface;
 use Zend\Form\FormInterface;
 use ZF2Components\View\Component\AccordionContent\Content;
 use ZF2Components\View\InitializableInterface;
@@ -20,20 +21,30 @@ class AccordionContent extends ViewHelperAwareView implements InitializableInter
 
 	protected $form;
 
+	protected $eventManager;
+
 	public function __construct(
 		Content $content,
-		FormInterface $formInterface
+		FormInterface $formInterface,
+		EventManagerInterface $eventManagerInterface
 	){
 		$this->contentPrototype = $content;
 		$this->form = $formInterface;
+		$this->eventManager = $eventManagerInterface;
 	}
 
 	public function init()
 	{
 		$this->setVariable('accordion_content', $this);
 
-		$this->form->setName($this->id);
+		$this->form->setName($this->getId(false).'-form');
 		$this->setVariable('form', $this->form);
+
+		$this->eventManager->trigger(
+			'accordion_content.'.$this->getId(false).':init',
+			$this,
+			array()
+		);
 	}
 
 	/**
@@ -47,15 +58,18 @@ class AccordionContent extends ViewHelperAwareView implements InitializableInter
 	}
 
 	/**
+	 * @param bool $asAttributeString
 	 * @return string
 	 */
-	protected function getId()
+	public function getId($asAttributeString = true)
 	{
 		if($this->id){
-			return 'id="'.$this->id.'"';
-		}else{
-			return '';
+			if($asAttributeString){
+				return 'id="'.$this->id.'"';
+			}
+			return $this->id;
 		}
+		return '';
 	}
 
 	/**

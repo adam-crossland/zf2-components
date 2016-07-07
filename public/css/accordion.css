@@ -1,0 +1,12 @@
+/* Accordion CSS */
+div.accordion-content-container div.tabs {
+    width: 24%;
+    margin-right: 1%;
+    float: left;
+    cursor: pointer;
+}
+div.accordion-content-container div.content {
+    width: 74%;
+    margin-left: 1%;
+    float: left;
+}
