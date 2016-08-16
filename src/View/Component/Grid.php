@@ -12,7 +12,7 @@ use ParamsHelper\View\Helper\ParamsHelper;
 class Grid extends ViewHelperAwareView implements InitializableInterface
 {
 	const SIZE_LARGE = 'btn btn-lg';
-	const SIZE_NORMAL = 'btn';
+	const SIZE_NORMAL = 'size-normal';
 	const SIZE_SMALL = 'btn btn-xs';
 	const SIZE_EXTRA_SMALL = 'btn btn-sm';
 
@@ -62,11 +62,14 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 
 	protected $currentRow;
 
+	protected $isFilteringDisabled = false;
+
 	public function __construct(
 		ServiceLocatorInterface $serviceLocatorInterface,
 		StandardColumn $standardColumn
 	){
 		$this->setSizeNormal();
+		$this->setAdditionClasses('grid-container');
 		$this->columnPrototype = $standardColumn;
 		$this->serviceLocator = $serviceLocatorInterface;
 	}
@@ -102,12 +105,16 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 	}
 
 	/**
+	 * @param bool $asAttributeString
 	 * @return string
 	 */
-	protected function getId()
+	public function getId($asAttributeString = true)
 	{
 		if($this->id){
-			return 'id="'.$this->id.'"';
+			if($asAttributeString){
+				return 'id="'.$this->id.'"';
+			}
+			return $this->id;
 		}else{
 			return '';
 		}
@@ -414,6 +421,7 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 			'collection_service_alias' => urlencode($this->getCollectionServiceAlias()),
 			'row_hydrator_service_alias' => urlencode($this->rowHydratorServiceAlias),
 			'on_click_url_key' => $this->onClickKey,
+			'filtering_disabled' => $this->isFilteringDisabled(),
 		));
 	}
 
@@ -431,6 +439,8 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 			->setCollectionServiceAlias(urldecode($data['collection_service_alias']))
 			->setRowHydratorServiceAlias(urldecode($data['row_hydrator_service_alias']))
 			->setRowOnClick($data['on_click_url_key']);
+
+		$this->isFilteringDisabled = $data['filtering_disabled'];
 
 		foreach($data['columns'] as $id => $columnData){
 			$column = $this->addColumn($id);
@@ -480,7 +490,6 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 		if(!$this->hasRowHydrator()){
 			throw new \Exception('No row hydrator set, unable to extract data from row object');
 		}
-
 		$this->currentRow = $this->getRowHydrator()->extract($row);
 		return $this;
 	}
@@ -492,6 +501,7 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 
 	public function getRowOnClickUrl()
 	{
+		//die(json_encode($this->currentRow));
 		if(!isset($this->currentRow[$this->onClickKey])){
 			echo json_encode($this->onClickKey);
 			return null;
@@ -501,5 +511,22 @@ class Grid extends ViewHelperAwareView implements InitializableInterface
 
 		list($route, $params) = $this->currentRow[$this->onClickKey];
 		return $urlHelper($route, $params);
+	}
+
+	public function disableFiltering()
+	{
+		$this->isFilteringDisabled = true;
+		return $this;
+	}
+
+	public function enableFiltering()
+	{
+		$this->isFilteringDisabled = false;
+		return $this;
+	}
+
+	public function isFilteringDisabled()
+	{
+		return $this->isFilteringDisabled;
 	}
 }

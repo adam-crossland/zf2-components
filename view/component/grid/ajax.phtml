@@ -3,6 +3,7 @@
 /* @var $grid ZF2Components\View\Component\Grid */
 $grid = $this->grid;
 ?>
+<?php if(!$grid->isFilteringDisabled()): ?>
 <div class="grid-top">
 	<div class="grid-top-section">
 		Total Results: <?php echo $grid->getCollectionResultCount(); ?>
@@ -23,13 +24,16 @@ $grid = $this->grid;
 	<div class="grid-top-section">[SEARCH]</div>
 	<div style="clear: both;"></div>
 </div>
+<?php endif; ?>
 <table class="table table-condensed table-hover table-bordered table-striped">
 	<thead><tr><?php
 		foreach($grid->getColumns() as $column){
 			echo $this->render($column->getHeader());
 		}
 	?></tr></thead>
-	<tbody><?php foreach($grid->getCollectionResults() as $row): $grid->setCurrentRow($row); ?>
+	<tbody><?php foreach($grid->getCollectionResults() as $row):
+		$grid->setCurrentRow($row);
+		?>
 		<tr style="cursor: pointer;" onclick="window.location = '<?php echo $grid->getRowOnClickUrl(); ?>';">
 			<?php
 			foreach($grid->getColumns() as $column){

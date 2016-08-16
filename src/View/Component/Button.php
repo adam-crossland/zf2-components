@@ -59,16 +59,19 @@ class Button extends ViewHelperAwareView implements InitializableInterface
 		return $this;
 	}
 
-    /**
-     * @param $id
-     * @param bool $confirm
-     * @param string $submitLocation
-     * @param bool $isAjax
-     * @param string $returnId
-     * @param string $dataType
-     * @return $this
-     */
-	public function setOnclickSubmitForm($id, $confirm = false, $submitLocation = '', $isAjax = false, $returnId = '', $dataType = '')
+	/**
+	 * @param $id
+	 * @param bool $confirm
+	 * @param string $submitLocation
+	 * @param bool $isAjax
+	 * @param string $returnId
+	 * @param string $dataType
+	 * @param bool $hideFormOnSubmit
+	 * @param string $hideId
+	 * @param string $loadingText
+	 * @return $this
+	 */
+	public function setOnclickSubmitForm($id, $confirm = false, $submitLocation = '', $isAjax = false, $returnId = '', $dataType = '', $hideFormOnSubmit = false, $hideId = '', $loadingText = 'Loading...')
 	{
 		$this->onClick = '';
 
@@ -78,6 +81,19 @@ class Button extends ViewHelperAwareView implements InitializableInterface
             }
             $this->onClick .= '$(\'#'.$id.'\').submit();';
         }else{
+
+			// hide the form / container if needed
+			if($hideFormOnSubmit){
+				if($hideId == ''){
+					$hideId = $id;
+				}
+				$this->onClick .= '$(\'#'.$hideId.'\').hide(); ';
+			}
+
+			// add loading text
+			$this->onClick .= '$(\'#'.$returnId.'\').html(\''.$loadingText.'\'); ';
+
+			// post the form
             $this->onClick .= '$.ajax({method: \'POST\', url: \''.$submitLocation.'\', data: $(\'#'.$id.'\').serialize()';
             if($dataType){
                 $this->onClick .= ', dataType: \''.$dataType.'\'';

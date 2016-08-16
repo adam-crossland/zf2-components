@@ -16,7 +16,7 @@ $grid = $this->grid;
 		width: 35px;
 	}
 </style>
-<div class="grid-container" id="grid-data">
+<div <?php echo $grid->getAttributeString(); ?>>
 	Loading...
 </div>
 <script>
@@ -28,7 +28,7 @@ $grid = $this->grid;
 				'<?php echo ZF2Components\View\Component\Grid::AJAX_POST_KEY; ?>': '<?php echo $grid->export(); ?>'
 			},
 			success: function(response){
-				$('#grid-data').html(response);
+				$('#<?php echo $grid->getId(false); ?>').html(response);
 			}
 		})
 	})

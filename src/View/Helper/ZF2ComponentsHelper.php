@@ -42,6 +42,7 @@ class ZF2ComponentsHelper extends AbstractHelper
 	{
 		if(!$this->has($component, $id)){
 			$this->componentCache[$component][$id] = clone $this->prototypes[$component];
+			$this->componentCache[$component][$id]->setId($id);
 		}
 		return $this->componentCache[$component][$id];
 	}
