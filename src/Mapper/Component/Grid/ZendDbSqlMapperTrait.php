@@ -40,7 +40,7 @@ trait ZendDbSqlMapperTrait
 	public function getAll($where = null, $order = null, $limit = null, $offset = null)
 	{
 		$sql = new Sql($this->dbAdapter);
-		$select = $sql->select($this->tableName);
+		$select = $sql->select($this->getTableName($where));
 		if($where !== null){
 			$this->applyWhere($select, $where);
 		}
@@ -76,7 +76,7 @@ trait ZendDbSqlMapperTrait
 	public function getCount($where = null)
 	{
 		$sql = new Sql($this->dbAdapter);
-		$select = $sql->select($this->tableName);
+		$select = $sql->select($this->getTableName($where));
 		if($where !== null){
 			$this->applyWhere($select, $where);
 		}
@@ -108,5 +108,10 @@ trait ZendDbSqlMapperTrait
 		}else{
 			die('$where that is not and array not implemented');
 		}
+	}
+
+	protected function getTableName(&$where)
+	{
+		return $this->tableName;
 	}
 }
