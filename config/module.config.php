@@ -65,6 +65,9 @@ return array(
 		'factories' => array(
 			'zf2components' => '\ZF2Components\Factory\View\Helper\ZF2ComponentsHelperFactory',
 		),
+        'invokables' => array(
+            \ZF2Components\View\Helper\FormRow::class => \ZF2Components\View\Helper\FormRow::class
+        ),
         'aliases' => array(
             'formRow' => \ZF2Components\View\Helper\FormRow::class,
         )
