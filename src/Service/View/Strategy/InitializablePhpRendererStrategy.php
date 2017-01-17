@@ -38,10 +38,10 @@ class InitializablePhpRendererStrategy extends PhpRendererStrategy
 	 */
 	public function selectRenderer(ViewEvent $e)
 	{
-		$model = $e->getModel();
-		if(!$model instanceof InitializableInterface){
-			return;
-		}
+		//$model = $e->getModel();
+		//if(!$model instanceof InitializableInterface){
+		//	return;
+		//}
 		return $this->renderer;
 	}
 }
