@@ -2,6 +2,7 @@
     "name": "adam-crossland/zf2-components",
     "type": "library",
     "description": "components for zf2",
+    "version": "1.0.0",
     "keywords": ["components"],
     "license": "MIT",
     "authors": [{
