@@ -2,22 +2,23 @@
 namespace ZF2Components\Initializer\View;
 
 use ZF2Components\View\ViewHelperManagerAwareInterface;
-use Zend\ServiceManager\InitializerInterface;
+use Zend\ServiceManager\Initializer\InitializerInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
 
 class ViewHelperManagerAwareInitializer implements InitializerInterface
 {
     /**
-     * Initialize
+     * Initialize the given instance
      *
-     * @param $instance
-     * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
+     * @param  ContainerInterface $container
+     * @param  object             $instance
+     * @return void
      */
-    public function initialize($instance, ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $instance)
     {
         if($instance instanceof ViewHelperManagerAwareInterface){
-            $instance->setViewHelperManager($serviceLocator->get('ViewHelperManager'));
+            $instance->setViewHelperManager($container->get('ViewHelperManager'));
         }
     }
 }
