@@ -1,8 +1,8 @@
 <?php
 namespace ZF2Components\Factory\Controller;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use ZF2Components\Controller\GridController;
 
 class GridControllerFactory implements FactoryInterface

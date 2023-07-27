@@ -2,10 +2,10 @@
 namespace ZF2Components\View\Helper;
 
 use GCM\Model\PackageContent;
-use \Zend\Form\View\Helper\FormRow as ZendFormRow;
-use Zend\Form\ElementInterface;
+use \Laminas\Form\View\Helper\FormRow as LaminasFormRow;
+use Laminas\Form\ElementInterface;
 
-class FormRow extends ZendFormRow
+class FormRow extends LaminasFormRow
 {
     public function render(ElementInterface $element, $labelPosition = null)
     {

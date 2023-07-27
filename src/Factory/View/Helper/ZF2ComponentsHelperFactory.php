@@ -1,9 +1,9 @@
 <?php
 namespace ZF2Components\Factory\View\Helper;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Mvc\Router\Http\RouteMatch;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
+use Laminas\Mvc\Router\Http\RouteMatch;
 use \ParamsHelper\View\Helper\ParamsHelper;
 use ZF2Components\View\Helper\ZF2ComponentsHelper;
 
@@ -15,7 +15,7 @@ class ZF2ComponentsHelperFactory implements FactoryInterface
 	 */
 	public function createService(ServiceLocatorInterface $serviceLocator)
 	{
-		if(get_class($serviceLocator) instanceof \Zend\ServiceManager\ServiceManager){
+		if(get_class($serviceLocator) instanceof \Laminas\ServiceManager\ServiceManager){
 			$realServiceLocator = $serviceLocator;
 		}else{
 			$realServiceLocator = $serviceLocator->getServiceLocator();

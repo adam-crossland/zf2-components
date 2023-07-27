@@ -1,8 +1,8 @@
 <?php
 namespace ZF2Components\Factory\View\Component;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use \ParamsHelper\View\Helper\ParamsHelper;
 use ZF2Components\View\Component\AccordionContent;
 
@@ -16,11 +16,11 @@ class AccordionContentFactory implements FactoryInterface
 	{
 		$content = $serviceLocator->get('ZF2Components\View\Component\AccordionContent\Content');
 
-		/** @var \Zend\Form\FormElementManager\FormElementManagerV2Polyfill $formElementManager */
+		/** @var \Laminas\Form\FormElementManager\FormElementManagerV2Polyfill $formElementManager */
 		$formElementManager = $serviceLocator->get('formelementmanager');
 		$form = $formElementManager->get('ZF2Components\Form\AccordionContentForm');
 
-		/** @var \Zend\EventManager\SharedEventManager $sharedEventManager */
+		/** @var \Laminas\EventManager\SharedEventManager $sharedEventManager */
 		$eventManager = $serviceLocator->get('ZF2Components\EventManager');
 
 		return new AccordionContent(

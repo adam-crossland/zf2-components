@@ -2,8 +2,8 @@
 namespace ZF2Components\Factory\Service\View\Strategy;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use ZF2Components\Service\View\Renderer\InitializablePhpRenderer;
 use ZF2Components\Service\View\Strategy\InitializablePhpRendererStrategy;
 

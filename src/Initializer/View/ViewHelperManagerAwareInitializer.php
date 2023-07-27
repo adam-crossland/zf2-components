@@ -2,8 +2,8 @@
 namespace ZF2Components\Initializer\View;
 
 use ZF2Components\View\ViewHelperManagerAwareInterface;
-use Zend\ServiceManager\Initializer\InitializerInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\Initializer\InitializerInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use Interop\Container\ContainerInterface;
 
 class ViewHelperManagerAwareInitializer implements InitializerInterface

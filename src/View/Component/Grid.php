@@ -1,12 +1,12 @@
 <?php
 namespace ZF2Components\View\Component;
 
-use Zend\Hydrator\HydratorInterface;
+use Laminas\Hydrator\HydratorInterface;
 use ZF2Components\View\InitializableInterface;
 use ZF2Components\View\ViewHelperAwareView;
-use Zend\View\Helper\Url;
+use Laminas\View\Helper\Url;
 use ZF2Components\View\Component\Grid\Column\Standard as StandardColumn;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use ParamsHelper\View\Helper\ParamsHelper;
 
 class Grid extends ViewHelperAwareView implements InitializableInterface

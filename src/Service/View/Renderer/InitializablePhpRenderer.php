@@ -1,7 +1,7 @@
 <?php
 namespace ZF2Components\Service\View\Renderer;
 
-use Zend\View\Renderer\PhpRenderer;
+use Laminas\View\Renderer\PhpRenderer;
 use ZF2Components\View\InitializableInterface;
 
 class InitializablePhpRenderer extends PhpRenderer

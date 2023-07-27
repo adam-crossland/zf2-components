@@ -1,8 +1,8 @@
 <?php
 namespace ZF2Components\View\Component;
 
-use Zend\EventManager\EventManagerInterface;
-use Zend\Form\FormInterface;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\Form\FormInterface;
 use ZF2Components\View\Component\AccordionContent\Content;
 use ZF2Components\View\InitializableInterface;
 use ZF2Components\View\ViewHelperAwareView;

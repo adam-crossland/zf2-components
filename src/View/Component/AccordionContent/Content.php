@@ -3,7 +3,7 @@ namespace ZF2Components\View\Component\AccordionContent;
 
 use ZF2Components\View\InitializableInterface;
 use ZF2Components\View\ViewHelperAwareView;
-use Zend\View\Helper\Url;
+use Laminas\View\Helper\Url;
 
 class Content extends ViewHelperAwareView implements InitializableInterface
 {
