@@ -3,20 +3,20 @@ namespace ZF2Components\Mapper\Component\Grid;
 
 use Sites\Model\Site;
 use Sites\Model\SiteInterface;
-use Zend\Db\Adapter\Driver\ResultInterface;
-use Zend\Db\ResultSet\HydratingResultSet;
-use Zend\Db\Sql\Sql;
-use Zend\Db\Sql\Select;
+use Laminas\Db\Adapter\Driver\ResultInterface;
+use Laminas\Db\ResultSet\HydratingResultSet;
+use Laminas\Db\Sql\Sql;
+use Laminas\Db\Sql\Select;
 
 trait ZendDbSqlMapperTrait
 {
 	/**
-	 * @var \Zend\Db\Adapter\AdapterInterface
+	 * @var \Laminas\Db\Adapter\AdapterInterface
 	 */
 	protected $dbAdapter;
 
 	/**
-	 * @var \Zend\Stdlib\Hydrator\HydratorInterface
+	 * @var \Laminas\Stdlib\Hydrator\HydratorInterface
 	 */
 	protected $hydrator;
 
@@ -55,7 +55,7 @@ trait ZendDbSqlMapperTrait
 		}
 		$stmt = $sql->prepareStatementForSqlObject($select);
 
-		/** @var \Zend\Db\Adapter\Driver\Pdo\Result  $result */
+		/** @var \Laminas\Db\Adapter\Driver\Pdo\Result  $result */
 		$result = $stmt->execute();
 
 		if($result instanceof ResultInterface && $result->isQueryResult()){
@@ -81,10 +81,10 @@ trait ZendDbSqlMapperTrait
 			$this->applyWhere($select, $where);
 		}
 
-		$select->columns(array('count' => new \Zend\Db\Sql\Expression('COUNT(*)')));
+		$select->columns(array('count' => new \Laminas\Db\Sql\Expression('COUNT(*)')));
 
 		$stmt = $sql->prepareStatementForSqlObject($select);
-		/** @var \Zend\Db\Adapter\Driver\Pdo\Result $result */
+		/** @var \Laminas\Db\Adapter\Driver\Pdo\Result $result */
 		$result = $stmt->execute();
 		$result = $result->current();
 		return $result['count'];

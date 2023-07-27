@@ -1,8 +1,8 @@
 <?php
 namespace ZF2Components\Factory\View\Component\Grid\Column;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\FactoryInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 use \ParamsHelper\View\Helper\ParamsHelper;
 use ZF2Components\View\Component\Grid\Column\Standard;
 

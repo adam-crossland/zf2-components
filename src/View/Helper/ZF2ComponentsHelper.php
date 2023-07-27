@@ -1,6 +1,6 @@
 <?php
 namespace ZF2Components\View\Helper;
-use Zend\View\Helper\AbstractHelper;
+use Laminas\View\Helper\AbstractHelper;
 use ZF2Components\View\Component\AccordionContent;
 use ZF2Components\View\Component\Button;
 use ZF2Components\View\Component\ButtonBar;

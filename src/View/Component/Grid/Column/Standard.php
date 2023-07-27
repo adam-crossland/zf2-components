@@ -3,7 +3,7 @@ namespace ZF2Components\View\Component\Grid\Column;
 
 use ZF2Components\View\InitializableInterface;
 use ZF2Components\View\ViewHelperAwareView;
-use Zend\View\Helper\Url;
+use Laminas\View\Helper\Url;
 use ZF2Components\View\Component\Grid\ColumnHeader\Standard as ColumnHeader;
 use ZF2Components\View\Component\Grid\ColumnData\Standard as ColumnData;
 use ZF2Components\View\Component\Grid;

@@ -1,7 +1,7 @@
 <?php
 namespace ZF2Components\View;
 
-use Zend\View\HelperPluginManager;
+use Laminas\View\HelperPluginManager;
 
 trait ViewHelperManagerAwareInterfaceTrait
 {

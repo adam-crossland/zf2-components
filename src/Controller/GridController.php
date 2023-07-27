@@ -2,7 +2,7 @@
 namespace ZF2Components\Controller;
 
 use Sites\Model\Authenticator;
-use Zend\Mvc\Controller\AbstractActionController;
+use Laminas\Mvc\Controller\AbstractActionController;
 use ZF2Components\View\Helper\ZF2ComponentsHelper;
 
 class GridController extends AbstractActionController

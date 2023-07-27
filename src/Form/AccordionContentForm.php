@@ -1,7 +1,7 @@
 <?php
 namespace ZF2Components\Form;
 
-use Zend\Form\Form;
+use Laminas\Form\Form;
 
 class AccordionContentForm extends Form
 {

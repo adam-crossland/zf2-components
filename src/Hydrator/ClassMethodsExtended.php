@@ -1,7 +1,7 @@
 <?php
 namespace ZF2Components\Hydrator;
 
-use Zend\Hydrator\ClassMethods;
+use Laminas\Hydrator\ClassMethods;
 
 /**
  * Class ClassMethodsExtended

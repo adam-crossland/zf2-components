@@ -1,10 +1,10 @@
 <?php
 namespace ZF2Components\Service\View\Strategy;
 
-use Zend\EventManager\EventManagerInterface;
-use Zend\View\Renderer\PhpRenderer;
-use Zend\View\Strategy\PhpRendererStrategy;
-use Zend\View\ViewEvent;
+use Laminas\EventManager\EventManagerInterface;
+use Laminas\View\Renderer\PhpRenderer;
+use Laminas\View\Strategy\PhpRendererStrategy;
+use Laminas\View\ViewEvent;
 use ZF2Components\Service\View\Renderer\InitializablePhpRenderer;
 use ZF2Components\View\InitializableInterface;
 
